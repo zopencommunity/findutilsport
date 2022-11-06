@@ -1,0 +1,33 @@
+diff --git a/gl/lib/filemode.c b/gl/lib/filemode.c
+index a8cbea8..a9b7509 100644
+--- a/gl/lib/filemode.c
++++ b/gl/lib/filemode.c
+@@ -150,6 +150,28 @@ strmode (mode_t mode, char *str)
+ 
+    11   '\0'.  */
+ 
++#ifdef __MVS__
++  /* z/OS incorrectly defined these macros - if they are present, 
++   * redefined them
++   */
++  #ifdef S_TYPEISSEM
++     #undef S_TYPEISSEM
++     #define S_TYPEISSEM(x) (0)
++  #endif
++  #ifdef S_TYPEISMQ
++     #undef S_TYPEISMQ
++     #define S_TYPEISMQ(x) (0)
++  #endif
++  #ifdef S_TYPEISSHM
++     #undef S_TYPEISSHM
++     #define S_TYPEISSHM(x) (0)
++  #endif
++  #ifdef S_TYPEISTMO
++     #undef S_TYPEISTMO
++     #define S_TYPEISTMO(x) (0)
++  #endif
++#endif
++
+ void
+ filemodestring (struct stat const *statp, char *str)
+ {
