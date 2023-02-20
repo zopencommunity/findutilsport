@@ -1,7 +1,7 @@
 export ZOPEN_GIT_URL="https://git.savannah.gnu.org/git/findutils.git"
 export ZOPEN_GIT_DEPS="curl make gzip tar"
 export ZOPEN_TARBALL_URL="https://ftp.gnu.org/gnu/findutils/findutils-4.9.0.tar.xz"
-export ZOPEN_TARBALL_DEPS="curl make xz tar zoslib"
+export ZOPEN_TARBALL_DEPS="curl make xz tar zoslib coreutils"
 export ZOPEN_TYPE="TARBALL"
 
 zopen_check_results()
