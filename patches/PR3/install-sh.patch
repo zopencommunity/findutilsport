@@ -1,0 +1,19 @@
+diff --git a/build-aux/install-sh b/build-aux/install-sh
+index ec298b5..b72ff7f 100755
+--- a/build-aux/install-sh
++++ b/build-aux/install-sh
+@@ -234,10 +234,10 @@ fi
+ 
+ if test -z "$dir_arg"; then
+   do_exit='(exit $ret); exit $ret'
+-  trap "ret=129; $do_exit" 1
+-  trap "ret=130; $do_exit" 2
+-  trap "ret=141; $do_exit" 13
+-  trap "ret=143; $do_exit" 15
++  trap "ret=129; $do_exit" HUP
++  trap "ret=130; $do_exit" INT
++  trap "ret=141; $do_exit" PIPE
++  trap "ret=143; $do_exit" TERM
+ 
+   # Set umask so as not to create temps with too-generous modes.
+   # However, 'strip' requires both read and write access to temps.
