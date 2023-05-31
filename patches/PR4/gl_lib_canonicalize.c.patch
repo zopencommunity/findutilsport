@@ -1,0 +1,25 @@
+diff --git a/gl/lib/canonicalize.c b/gl/lib/canonicalize.c
+index eaf18c6..d82c43d 100644
+--- a/gl/lib/canonicalize.c
++++ b/gl/lib/canonicalize.c
+@@ -420,6 +420,20 @@ canonicalize_filename_mode_stk (const char *name, canonicalize_mode_t can_mode,
+                   /* Install the new prefix to be in effect hereafter.  */
+                   prefix_len = pfxlen;
+                 }
++              else if (   (!strncmp("$VERSION/",buf,9))
++                       || (!strncmp("$SYSNAME/",buf,9))
++                       || (!strncmp("$SYSSYMR/",buf,9))
++                       || (!strncmp("$SYSSYMA/",buf,9))
++                       || (!strncmp("$SYSSECR/",buf,9))
++                       || (!strncmp("$SYSSECA/",buf,9))
++                     )
++                {
++                  /* z/OS symbolic links can contain special substitutions. */
++                  /* The code currently doesn't handle them and they can result in loops. */
++                  /* Fail for now to avoid a hard loop. Needs fixing properly. */
++                  errno = ELOOP;
++                  goto error;
++                }
+               else
+                 {
+                   /* Back up to previous component, ignore if at root
