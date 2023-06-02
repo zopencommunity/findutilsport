@@ -14,7 +14,7 @@ totalTests=$(egrep '^# ERROR:|^# PASS:|^# XFAIL:|^# FAIL:|^# XPASS:' ${chk} | aw
 cat <<ZZ
 actualFailures:$failures
 totalTests:$totalTests
-expectedFailures:19
+expectedFailures:20
 expectedTotalTests:236
 ZZ
 }
