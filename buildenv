@@ -1,25 +1,30 @@
-export ZOPEN_GIT_URL="https://git.savannah.gnu.org/git/findutils.git"
-export ZOPEN_GIT_DEPS="curl make gzip tar"
-export ZOPEN_TARBALL_URL="https://ftp.gnu.org/gnu/findutils/findutils-4.9.0.tar.xz"
-export ZOPEN_TARBALL_DEPS="curl make xz tar zoslib coreutils"
-export ZOPEN_TYPE="TARBALL"
+export ZOPEN_DEV_URL="https://git.savannah.gnu.org/git/findutils.git"
+export ZOPEN_DEV_DEPS="curl make gzip tar"
+export ZOPEN_STABLE_URL="https://ftp.gnu.org/gnu/findutils/findutils-4.9.0.tar.xz"
+export ZOPEN_STABLE_DEPS="curl make xz tar zoslib coreutils"
+export ZOPEN_BUILD_LINE="STABLE"
 
 zopen_check_results()
 {
 chk="$1/$2_check.log"
 
-failures=$(egrep '^# FAIL:|^# ERROR:|^# XFAIL' ${chk} | awk '{sum+=$3;} END{print sum;}')
-totalTests=$(egrep '^# ERROR:|^# PASS:|^# XFAIL:|^# FAIL:|^# XPASS:' ${chk} | awk '{sum+=$3;} END{print sum;}')
+failures=$(grep -E '^# FAIL:|^# ERROR:|^# XFAIL' ${chk} | awk '{sum+=$3;} END{print sum;}')
+totalTests=$(grep -E '^# ERROR:|^# PASS:|^# XFAIL:|^# FAIL:|^# XPASS:' ${chk} | awk '{sum+=$3;} END{print sum;}')
 
 cat <<ZZ
 actualFailures:$failures
 totalTests:$totalTests
 expectedFailures:20
-expectedTotalTests:236
+expectedTotalTests:235
 ZZ
 }
 
 zopen_append_to_env()
 {
   # echo envars outside of PATH, MANPATH, LIBPATH
+}
+
+zopen_get_version()
+{
+  ./find/find --version | head -1 | awk '{print $4; }'
 }
