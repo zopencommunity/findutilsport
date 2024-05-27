@@ -1,0 +1,17 @@
+diff --git a/gl/lib/fts.c b/gl/lib/fts.c
+index 706c56c..14053bb 100644
+--- a/gl/lib/fts.c
++++ b/gl/lib/fts.c
+@@ -1375,8 +1375,11 @@ fts_build (register FTS *sp, int type)
+                                  != NO_LEAF_OPTIMIZATION)));
+             if (descend || type == BREAD)
+               {
+-                if (ISSET(FTS_CWDFD))
++                if (ISSET(FTS_CWDFD)) {
++                  int old_fd = dir_fd;
+                   dir_fd = fcntl (dir_fd, F_DUPFD_CLOEXEC, STDERR_FILENO + 1);
++                  close(old_fd); // avoid excess open file descriptors
++                }
+                 if (dir_fd < 0 || fts_safe_changedir(sp, cur, dir_fd, NULL)) {
+                         if (descend && type == BREAD)
+                                 cur->fts_errno = errno;
