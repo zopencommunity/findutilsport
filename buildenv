@@ -25,7 +25,7 @@ ZZ
 zopen_post_install()
 {
   mv $ZOPEN_INSTALL_DIR/bin/find $ZOPEN_INSTALL_DIR/bin/gfind
-  mv $ZOPEN_INSTALL_DIR/bin/gfind $ZOPEN_INSTALL_DIR/bin/gxargs
+  mv $ZOPEN_INSTALL_DIR/bin/xargs $ZOPEN_INSTALL_DIR/bin/gxargs
   mkdir $ZOPEN_INSTALL_DIR/altbin
   ln -s ../bin/gfind $ZOPEN_INSTALL_DIR/altbin/find
   ln -s ../bin/gxargs $ZOPEN_INSTALL_DIR/altbin/xargs
