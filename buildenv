@@ -31,6 +31,16 @@ zopen_post_install()
   ln -s ../bin/gxargs $ZOPEN_INSTALL_DIR/altbin/xargs
 }
 
+zopen_install_caveats()
+{
+cat <<ZZ
+GNU find has been installed with the prefix "g" under bin/find to avoid collision with z/OS /bin/find.
+If you prefer to use GNU find as find, source zopen-config with the option --override-zos-tools.
+Or add \$ZOPEN_ROOTFS/usr/local/altbin to your \$PATH.
+ZZ
+}
+
+
 zopen_append_to_env()
 {
   # echo envars outside of PATH, MANPATH, LIBPATH
