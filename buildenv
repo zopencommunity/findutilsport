@@ -29,14 +29,21 @@ zopen_post_install()
   mkdir $ZOPEN_INSTALL_DIR/altbin
   ln -s ../bin/gfind $ZOPEN_INSTALL_DIR/altbin/find
   ln -s ../bin/gxargs $ZOPEN_INSTALL_DIR/altbin/xargs
+
+  mkdir -p $ZOPEN_INSTALL_DIR/share/altman/man1
+  mv $ZOPEN_INSTALL_DIR/share/man/man1/find.1 $ZOPEN_INSTALL_DIR/share/man/man1/gfind.1
+  ln -s ../../man/man1/gfind.1 $ZOPEN_INSTALL_DIR/share/altman/man1/find.1
+  mv $ZOPEN_INSTALL_DIR/share/man/man1/xargs.1 $ZOPEN_INSTALL_DIR/share/man/man1/gxargs.1
+  ln -s ../../man/man1/gxargs.1 $ZOPEN_INSTALL_DIR/share/altman/man1/xargs.1
 }
 
 zopen_install_caveats()
 {
 cat <<ZZ
-GNU find has been installed with the prefix "g" under bin/find to avoid collision with z/OS /bin/find.
-If you prefer to use GNU find as find, source zopen-config with the option --override-zos-tools.
-Or add \$ZOPEN_ROOTFS/usr/local/altbin to your \$PATH.
+GNU find has been installed as gfind under the bin/ dir to avoid collision with z/OS /bin/find.
+The conflicting manpages have been installed under the share/altman dir. You can use zotman to view
+the manpages as such: zotman gfind
+If you prefer to use the GNU find as find, source zopen-config with the option --override-zos-tools.
 ZZ
 }
 
