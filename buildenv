@@ -2,6 +2,7 @@
 FINDUTILS_VERSION="4.9.0"
 
 export ZOPEN_DEV_URL="https://git.savannah.gnu.org/git/findutils.git"
+export ZOPEN_CATEGORIES="utilities"
 export ZOPEN_DEV_DEPS="curl make gzip tar"
 export ZOPEN_STABLE_URL="https://ftp.gnu.org/gnu/findutils/findutils-${FINDUTILS_VERSION}.tar.xz"
 export ZOPEN_STABLE_DEPS="curl make xz tar zoslib coreutils"
