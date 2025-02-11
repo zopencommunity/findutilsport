@@ -1,5 +1,5 @@
 # bump: findutils-version /FINDUTILS_VERSION="(.*)"/ https://git.savannah.gnu.org/git/findutils.git|semver:*
-FINDUTILS_VERSION="4.9.0"
+FINDUTILS_VERSION="4.10.0"
 
 export ZOPEN_DEV_URL="https://git.savannah.gnu.org/git/findutils.git"
 export ZOPEN_CATEGORIES="utilities"
@@ -7,6 +7,8 @@ export ZOPEN_DEV_DEPS="curl make gzip tar"
 export ZOPEN_STABLE_URL="https://ftp.gnu.org/gnu/findutils/findutils-${FINDUTILS_VERSION}.tar.xz"
 export ZOPEN_STABLE_DEPS="curl make xz tar zoslib coreutils"
 export ZOPEN_BUILD_LINE="STABLE"
+
+export ZOPEN_CHECK_OPTS="-i check"
 
 zopen_check_results()
 {
