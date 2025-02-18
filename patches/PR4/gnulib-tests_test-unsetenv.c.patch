@@ -1,19 +1,20 @@
 diff --git a/gnulib-tests/test-unsetenv.c b/gnulib-tests/test-unsetenv.c
-index 61dbc81..9a3ef83 100644
+index e26d0e0..bf726b9 100644
 --- a/gnulib-tests/test-unsetenv.c
 +++ b/gnulib-tests/test-unsetenv.c
-@@ -32,6 +32,10 @@ SIGNATURE_CHECK (unsetenv, int, (char const *));
+@@ -32,6 +32,11 @@ SIGNATURE_CHECK (unsetenv, int, (char const *));
  int
  main (void)
  {
-+ /*The guard is added as a workaround for issue 
-+  * https://github.com/ZOSOpenTools/findutilsport/issues/14
-+  * This guard can be removed once the fix for issue is provided by LE team*/
++
++/*The guard is added as a workaround for issue 
++* https://github.com/ZOSOpenTools/findutilsport/issues/14
++* This guard can be removed once the fix for issue is provided by LE team*/
 +#ifndef __MVS__
-   char entry[] = "b=2";
+   /* Static to pacify gcc -Wanalyzer-putenv-of-auto-var.  */
+   static char entry[] = "b=2";
  
-   /* Test removal when multiple entries present.  */
-@@ -49,6 +53,7 @@ main (void)
+@@ -50,6 +55,7 @@ main (void)
    errno = 0;
    ASSERT (unsetenv ("a=b") == -1);
    ASSERT (errno == EINVAL);
