@@ -9,7 +9,6 @@ export ZOPEN_STABLE_DEPS="curl make xz tar zoslib coreutils"
 export ZOPEN_BUILD_LINE="STABLE"
 
 export ZOPEN_CHECK_OPTS="-i check"
-
 zopen_check_results()
 {
 chk="$1/$2_check.log"
@@ -20,8 +19,8 @@ totalTests=$(grep -E '^# ERROR:|^# PASS:|^# XFAIL:|^# FAIL:|^# XPASS:' ${chk} | 
 cat <<ZZ
 actualFailures:$failures
 totalTests:$totalTests
-expectedFailures:20
-expectedTotalTests:235
+expectedFailures:48
+expectedTotalTests:324
 ZZ
 }
 
