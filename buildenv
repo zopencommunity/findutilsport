@@ -1,5 +1,5 @@
 # bump: findutils-version /FINDUTILS_VERSION="(.*)"/ https://git.savannah.gnu.org/git/findutils.git|semver:*
-FINDUTILS_VERSION="4.9.0"
+FINDUTILS_VERSION="4.10.0"
 
 export ZOPEN_DEV_URL="https://git.savannah.gnu.org/git/findutils.git"
 export ZOPEN_CATEGORIES="utilities"
@@ -8,6 +8,7 @@ export ZOPEN_STABLE_URL="https://ftp.gnu.org/gnu/findutils/findutils-${FINDUTILS
 export ZOPEN_STABLE_DEPS="curl make xz tar zoslib coreutils"
 export ZOPEN_BUILD_LINE="STABLE"
 
+export ZOPEN_CHECK_OPTS="-i check"
 zopen_check_results()
 {
 chk="$1/$2_check.log"
@@ -18,8 +19,8 @@ totalTests=$(grep -E '^# ERROR:|^# PASS:|^# XFAIL:|^# FAIL:|^# XPASS:' ${chk} | 
 cat <<ZZ
 actualFailures:$failures
 totalTests:$totalTests
-expectedFailures:20
-expectedTotalTests:235
+expectedFailures:48
+expectedTotalTests:324
 ZZ
 }
 

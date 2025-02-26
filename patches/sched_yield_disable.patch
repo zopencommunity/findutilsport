@@ -1,0 +1,13 @@
+diff --git a/gnulib-tests/test-random-mt.c b/gnulib-tests/test-random-mt.c
+index 4e2f2d3..b3c4f80 100644
+--- a/gnulib-tests/test-random-mt.c
++++ b/gnulib-tests/test-random-mt.c
+@@ -22,7 +22,7 @@
+ 
+ /* Whether to help the scheduler through explicit yield().
+    Uncomment this to see if the operating system has a fair scheduler.  */
+-#define EXPLICIT_YIELD 1
++#define EXPLICIT_YIELD 0
+ 
+ /* Number of simultaneous threads.  */
+ #define THREAD_COUNT 4
